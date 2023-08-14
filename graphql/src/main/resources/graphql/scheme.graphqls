@@ -1,0 +1,35 @@
+scalar DateTime
+
+type Query {
+    getAllUsers: [UserDto]
+    getUserById(id: ID!): UserDto
+}
+
+type Mutation{
+    createUser(userRequest: UserRequest!) : UserDto
+    updateUser(userRequest: UserRequest!) : UserDto
+    deleteUser(id:ID!) : Boolean
+}
+
+
+type UserDto {
+    id: ID
+    createdDate: DateTime
+    updatedDate: DateTime
+    userName:String
+    email:String
+    role:Role
+}
+
+enum Role{
+    ADMIN
+    USER
+}
+
+
+input UserRequest {
+    id: ID
+    userName:String
+    email:String
+    role:Role
+}
